@@ -1,17 +1,14 @@
 import json
 import os
 
-import pandas as pd
 from django.conf import settings
 from django.http import JsonResponse
-from django.shortcuts import redirect, render
-from django.utils.html import escape
+from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
-from django_datatables_view.base_datatable_view import BaseDatatableView
 
 from nwhacks2024.document_parse.document_parser import extract_table
 from nwhacks2024.geooding.scrape_gmaps import get_photos_by_place_id
-from nwhacks2024.utils import join_tables
+
 
 # Create your views here.
 
