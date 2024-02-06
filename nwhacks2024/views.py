@@ -24,8 +24,11 @@ def process_place_id(request):
             data = json.loads(request.body)
             place_id = data.get("placeId")
 
-            # Use Selenium to gather menu images
-            image_urls = get_photos_by_place_id(place_id)
+            image_urls = []
+            while len(image_urls) == 0:
+                # Use Selenium to gather menu images
+                image_urls = get_photos_by_place_id(place_id)
+                print(image_urls)
 
             # Store image URLs in session
             request.session["image_urls"] = image_urls
