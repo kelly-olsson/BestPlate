@@ -3,10 +3,15 @@
 <head>
     <title>Menu Gallery</title>
     <style>
+        html, body {
+          width:100%;
+          height:100%;
+          font-family: 'Open Sans', sans-serif;
+        }
         .gallery {
             display: flex;
             flex-wrap: wrap;
-            width: 1085px;
+            width: 100%;
             height: 438px;
             position: absolute;
             left: 97px;
@@ -19,7 +24,7 @@
             background: #D9D9D9;
         }
         .header {
-            width: 1280px;
+            width: 100%;
             height: 68px;
             position: absolute;
             top: 0;
@@ -43,44 +48,261 @@
         }
         .select-image-text {
             position: absolute;
-            left: 491px;
             top: 182px;
             color: black;
             font-size: 30px;
             font-family: Amiri;
+            width: 100%;
+            text-align: center;
         }
+
         #loading-overlay {
-            position: fixed; /* Sit on top of the page content */
-            display: none; /* Hidden by default */
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-            z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-            cursor: pointer; /* Add a pointer on hover */
-        }
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5); /* Semi-transparent background */
+    z-index: 2; /* Specify a stack order */
+    cursor: pointer;
+    align-items: center; /* Align children vertically */
+    justify-content: center; /* Align children horizontally */
+    display: flex; /* Use flexbox for alignment */
+}
 
-        .loader {
-            border: 16px solid #f3f3f3; /* Light grey */
-            border-top: 16px solid #3498db; /* Blue */
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            animation: spin 2s linear infinite;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+.white-box {
+    background-color: white; /* White background */
+    padding: 20px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* A subtle shadow */
+    text-align: center; /* Center text */
+    width: 66%; /* 2/3 of the screen width */
+    max-width: 800px; /* Optional: max width for very large screens */
+}
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
+
+html, body {
+  width:100%;
+  height:100%;
+  background:#fff;
+  font-family: 'Open Sans', sans-serif;
+}
+.S {
+    position: absolute;
+    margin: 30% 30%;
+    display: block;
+}
+
+#circle {
+	width: 200px;
+	height: 200px;
+  color: #fff;
+	background: linear-gradient(-45deg, #bbbcbc, #F3F3F3, #bbbcbc);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 5s ease infinite;
+	-moz-animation: Gradient 5s ease infinite;
+	animation: Gradient 5s ease infinite;
+	-moz-border-radius: 50vh;
+	-webkit-border-radius: 50pvh;
+	border-radius: 50vh;
+	position: relative;
+	margin:auto;
+	top:25%;
+
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+
+
+.text {
+    position: relative;
+    top: 26%;
+    left: 0;
+    color: #000;
+    width: 400px;
+    margin: auto;
+}
+h1 {
+  text-align: center;
+}
+
+.words-wrapper {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+
+  b {
+  opacity:0;
+  display: inline-block;
+  position: absolute;
+  white-space: nowrap;
+  left: 0;
+  top: 0;
+  font-weight:200;
+  }
+
+  .is-visible {
+    position:relative;
+    opacity:1;
+    -webkit-animation: push-in 0.5s;
+    -moz-animation: push-in 0.5s;
+    animation: push-in 0.5s;
+  }
+
+  .is-hidden {
+    -webkit-animation: push-out 0.5s;
+    -moz-animation: push-out 0.5s;
+    animation: push-out 0.5s;
+  }
+}
+
+@-webkit-keyframes push-in {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-100%);
+  }
+  70% {
+    opacity: 1;
+    -webkit-transform: translateY(10%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+@-moz-keyframes push-in {
+  0% {
+    opacity: 0;
+    -moz-transform: translateY(-100%);
+  }
+  60% {
+    opacity: 1;
+    -moz-transform: translateY(10%);
+  }
+  100% {
+    opacity: 1;
+    -moz-transform: translateY(0);
+  }
+}
+@keyframes push-in {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-100%);
+    -moz-transform: translateXY(-100%);
+    -ms-transform: translateY(-100%);
+    -o-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: translateY(10%);
+    -moz-transform: translateY(10%);
+    -ms-transform: translateY(10%);
+    -o-transform: translateY(10%);
+    transform: translateY(10%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes push-out {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+  60% {
+    opacity: 0;
+    -webkit-transform: translateY(110%);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(100%);
+  }
+}
+@-moz-keyframes push-out {
+  0% {
+    opacity: 1;
+    -moz-transform: translateY(0);
+  }
+  60% {
+    opacity: 0;
+    -moz-transform: translateY(110%);
+  }
+  100% {
+    opacity: 0;
+    -moz-transform: translateY(100%);
+  }
+}
+@keyframes push-out {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+  60% {
+    opacity: 0;
+    -webkit-transform: translateX(110%);
+    -moz-transform: translateY(110%);
+    -ms-transform: translateY(110%);
+    -o-transform: translateY(110%);
+    transform: translateY(110%);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(100%);
+    -moz-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    -o-transform: translateY(100%);
+    transform: translateY(100%);
+  }
+}
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body style="background: #F4EFE7">
     <div class="header">
@@ -89,9 +311,36 @@
     </div>
 
         <!-- Loading Animation Overlay -->
-    <div id="loading-overlay" style="display: none;">
-        <div class="loader"></div>
-    </div>
+<div id="loading-overlay" style="display: none;">
+    <div class="white-box">
+    <div id="circle">
+	<?xml version="1.0" encoding="UTF-8"?>
+<svg class="S" width="80px" height="80px" viewBox="0 0 42 39" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-+expanded-Copy-4" transform="translate(-615.000000, -353.000000)">
+            <g id="Group-2" transform="translate(583.000000, 323.000000)">
+                <g id="Group-Copy" transform="translate(32.000000, 30.000000)">
+                    <path d="M25.7938508,26.1361607 C25.7938508,28.4129578 25.2200158,30.434422 24.0723286,32.2006138 C22.9246414,33.9668057 21.2696681,35.3395598 19.1073589,36.3189174 C16.9450497,37.298275 14.4085327,37.7879464 11.4977319,37.7879464 C9.06929229,37.7879464 7.03176227,37.6163522 5.38508065,37.2731585 C3.73839902,36.9299648 2.02521051,36.3314775 0.24546371,35.4776786 L0.24546371,26.6383929 C2.1250094,27.6093799 4.07937493,28.3669058 6.10861895,28.9109933 C8.13786297,29.4550808 10.0007476,29.7271205 11.6973286,29.7271205 C13.1610456,29.7271205 14.2338676,29.4718217 14.9158266,28.9612165 C15.5977857,28.4506113 15.9387601,27.7935308 15.9387601,26.9899554 C15.9387601,26.4877207 15.8015387,26.048272 15.5270917,25.671596 C15.2526448,25.29492 14.811873,24.9140644 14.2047631,24.5290179 C13.5976532,24.1439713 11.9801039,23.3571488 9.35206653,22.1685268 C6.97352641,21.0803517 5.18964808,20.0256747 4.00037802,19.0044643 C2.81110796,17.9832538 1.92956436,16.8113905 1.35572077,15.4888393 C0.781877171,14.166288 0.494959677,12.6010135 0.494959677,10.7929687 C0.494959677,7.41125541 1.71747769,4.77456303 4.1625504,2.8828125 C6.60762311,0.99106197 9.96746855,0.0452008929 14.2421875,0.0452008929 C18.017912,0.0452008929 21.868428,0.924098354 25.7938508,2.68191964 L22.7749496,10.3409598 C19.3651543,8.76729124 16.4211313,7.98046875 13.9427923,7.98046875 C12.66204,7.98046875 11.7305977,8.20647095 11.1484375,8.65848214 C10.5662773,9.11049333 10.2752016,9.67131362 10.2752016,10.3409598 C10.2752016,11.0608295 10.6452836,11.7053543 11.3854587,12.2745536 C12.1256337,12.8437528 14.1340562,13.8816889 17.4107863,15.3883929 C20.5544512,16.811391 22.7375191,18.3389985 23.9600554,19.9712612 C25.1825918,21.6035238 25.7938508,23.6584698 25.7938508,26.1361607 Z" id="S" fill="#000000"></path>
+                    <ellipse id="Oval" fill="#86BC25" cx="36.3225806" cy="33" rx="5.67741935" ry="5.71428571"></ellipse>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
+</div>
+<div class="text">
+  <h1>
+        <span class="words-wrapper">
+    <b class="is-visible">Reaching out to OpenAI...</b>
+    <b>Twiddling thumbs...</b>
+    <b>Having a nice conversation...</b>
+    <b>Talking about your food...</b>
+        </span>
+   </h1>
+</div>
+</div>
+</div>
 
     <div class="select-image-text">Select Menu Image:</div>
 
@@ -113,9 +362,45 @@
             return '';
         }
 
+        var isLast = function(word) {
+          return $(word).next().length > 0 ? false : true;
+        }
+
+        var getNext = function(word) {
+          return $(word).next();
+        }
+
+        var getVisible = function () {
+          return document.getElementsByClassName('is-visible');
+        }
+
+        var getFirst =  function() {
+          var node = $('.words-wrapper').children().first();
+          return node;
+        }
+
+        function switchWords(current, next) {
+            $(current).removeClass('is-visible').addClass('is-hidden');
+            $(next).removeClass('is-hidden').addClass('is-visible');
+        }
+
+        function getStarted() {
+            var current = $('.words-wrapper b.is-visible');
+            var next = current.next().length ? current.next() : $('.words-wrapper b').first();
+            switchWords(current, next);
+        }
+
+        function init() {
+            setInterval(getStarted, 3000);
+        }
+
+        $(document).ready(function() {
+            init();
+        });
+
         function handleImageClick(url) {
             // Show loading overlay
-            document.getElementById('loading-overlay').style.display = 'block';
+            document.getElementById('loading-overlay').style.display = 'flex';
 
             fetch('/process-image/', {
                 method: 'POST',
@@ -132,7 +417,7 @@
                 } else {
                     console.log('Processed Image:', data);
                 }
-                // Hide loading overlay
+                // Hide loading overlay after processing is complete
                 document.getElementById('loading-overlay').style.display = 'none';
             })
             .catch(error => {
@@ -141,6 +426,8 @@
                 document.getElementById('loading-overlay').style.display = 'none';
             });
         }
+
+
     </script>
 </body>
 </html>
