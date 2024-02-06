@@ -4,6 +4,7 @@ import re
 import time
 
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -36,9 +37,13 @@ photos_class_name = "U39Pmb"
 input_element_attribute = "jslog"
 input_element_value = "11886"
 
+# Initialize and configure Options
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+
 
 def get_photos(search_query):
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(options=chrome_options)
     try:
         # Open Google Maps
         driver.get("https://maps.google.ca")
@@ -104,7 +109,7 @@ def get_photos(search_query):
 
 
 def get_photos_by_place_id(place_id):
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(options=chrome_options)
     wait = WebDriverWait(driver, 10)
     action = ActionChains(driver)
     try:
