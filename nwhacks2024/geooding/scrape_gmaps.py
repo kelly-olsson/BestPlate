@@ -7,6 +7,9 @@ from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
 
 from nwhacks2024.geooding.utils import get_higher_quality
 
@@ -102,13 +105,17 @@ def get_photos(search_query):
 
 def get_photos_by_place_id(place_id):
     driver = webdriver.Chrome()
+    wait = WebDriverWait(driver, 10)
+    action = ActionChains(driver)
     try:
         url = f"https://www.google.com/maps/search/?api=1&query=Google&query_place_id={place_id}"
         # Open Google Maps
         driver.get(url)
         background_images = []
-        # Wait for the menu to appear (you may need to adjust the wait time)
-        time.sleep(wait_time)
+        # Wait for a specific element to appear
+        specific_element = wait.until(EC.presence_of_element_located((By.XPATH, "//div[@class='m6QErb ']")))
+        # Move to the specific element
+        action.move_to_element(specific_element).perform()
 
         # Find and click the menu button
         count = 0
