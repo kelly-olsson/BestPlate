@@ -67,10 +67,10 @@ def process_image(request):
                 break
             print(count)
             table = extract_table(image_url)
-            break
-        except:
             if table is not None and table.dataframe is not None:
                 break
+        except Exception as e:
+            print(f"Error during image processing: {e}")
             continue
 
     if table is not None and table.dataframe is not None:
