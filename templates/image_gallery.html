@@ -49,6 +49,37 @@
             font-size: 30px;
             font-family: Amiri;
         }
+        #loading-overlay {
+            position: fixed; /* Sit on top of the page content */
+            display: none; /* Hidden by default */
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+            z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+            cursor: pointer; /* Add a pointer on hover */
+        }
+
+        .loader {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body style="background: #F4EFE7">
@@ -56,6 +87,12 @@
         <img src="https://i.imgur.com/YK3dn3b.png" />
         <div class="title">BestPlate</div>
     </div>
+
+        <!-- Loading Animation Overlay -->
+    <div id="loading-overlay" style="display: none;">
+        <div class="loader"></div>
+    </div>
+
     <div class="select-image-text">Select Menu Image:</div>
 
     <div class="gallery">
@@ -65,7 +102,21 @@
     </div>
 
     <script>
+        function getCSRFToken() {
+            let cookies = document.cookie.split(';');
+            for (let cookie of cookies) {
+                let [name, value] = cookie.trim().split('=');
+                if (name === 'csrftoken') {
+                    return decodeURIComponent(value);
+                }
+            }
+            return '';
+        }
+
         function handleImageClick(url) {
+            // Show loading overlay
+            document.getElementById('loading-overlay').style.display = 'block';
+
             fetch('/process-image/', {
                 method: 'POST',
                 headers: {
@@ -81,19 +132,14 @@
                 } else {
                     console.log('Processed Image:', data);
                 }
+                // Hide loading overlay
+                document.getElementById('loading-overlay').style.display = 'none';
             })
-            .catch(error => console.error('Error:', error));
-        }
-
-        function getCSRFToken() {
-            let cookies = document.cookie.split(';');
-            for (let cookie of cookies) {
-                let [name, value] = cookie.trim().split('=');
-                if (name === 'csrftoken') {
-                    return decodeURIComponent(value);
-                }
-            }
-            return '';
+            .catch(error => {
+                console.error('Error:', error);
+                // Hide loading overlay even if there's an error
+                document.getElementById('loading-overlay').style.display = 'none';
+            });
         }
     </script>
 </body>
