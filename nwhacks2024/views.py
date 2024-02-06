@@ -58,6 +58,7 @@ def process_image(request):
     data = json.loads(request.body)
     image_url = data.get("imageUrl")
     print(image_url)
+    table = None
     count = 0
     while True:
         try:
@@ -68,30 +69,24 @@ def process_image(request):
             table = extract_table(image_url)
             break
         except:
+            if table is not None and table.dataframe is not None:
+                break
             continue
-    # for table in tables:
-    #     print(table.caption)
-    #     print(table.dataframe)
 
-    # df = join_tables(tables)
-    # file_path = "table.csv"
-    # df = pd.read_csv(file_path)
-    df = table.dataframe
-    print(df)
-    # df_combined = (
-    #     df.groupby("type")
-    #     .apply(lambda x: x.iloc[0].combine_first(x.iloc[1]))
-    #     .reset_index()
-    # )
-    # df_combined.to_csv("table.csv")
-    # # print(df.head())
-    # print(df_combined)
-    # Convert the DataFrame to HTML
-    df_html = df.to_html()
+    if table is not None and table.dataframe is not None:
+        # df = join_tables(tables)
+        # file_path = "table.csv"
+        # df = pd.read_csv(file_path)
+        df = table.dataframe
+        print(df)
+        # Convert the DataFrame to HTML
+        df_html = df.to_html()
 
-    request.session["df_html"] = df_html
+        request.session["df_html"] = df_html
 
-    return JsonResponse({"redirect_url": "/menu_filter/"})
+        return JsonResponse({"redirect_url": "/menu_filter/"})
+    else:
+        return JsonResponse({"error": "Unable to process the image or no data found."})
 
 
 from openai import OpenAI
