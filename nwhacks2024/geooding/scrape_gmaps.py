@@ -78,6 +78,8 @@ def get_photos(search_query):
         # Example: Print the image source URLs
         for photo in photos:
             print(photo.get_attribute("src"))
+    except Exception as e:
+        print(f"Error: {str(e)}")
 
     finally:
         # Close the webdriver
@@ -139,6 +141,9 @@ def get_photos_by_place_id(place_id):
         # Example: Print the image source URLs
         for photo in photos:
             print(photo.get_attribute("src"))
+
+    except Exception as e:
+        print(f"Error: {str(e)}")
 
     finally:
         # Close the webdriver

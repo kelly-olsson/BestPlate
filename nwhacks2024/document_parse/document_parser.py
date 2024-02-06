@@ -54,28 +54,33 @@ client = instructor.patch(
 )
 
 
-def extract_table(url: str) -> Table:
-    return client.chat.completions.create(
-        model="gpt-4-vision-preview",
-        response_model=Table,
-        max_tokens=1800,
-        messages=[
-            {
-                "role": "user",
-                "content": [
-                    {
-                        "type": "text",
-                        "text": """Extract data from the table, which is a menu. 
-                                    Table should have a title, description, price, and dietary restrictions column if applicable.
-                                    If there seem to be multiple tables, add another table column representing the title of the table (label the column type), hence joining all the tables into one. 
-                                    Dietary restrictions may include gluten-free, vegan, vegetarian, kosher, halal, and any other common restrictions. 
-                                    Only include restrictions that are mentioned in the menu (might be a symbol), othewise keep blank""",
-                    },
-                    {"type": "image_url", "image_url": {"url": url}},
-                ],
-            }
-        ],
-    )
+def extract_table(url: str) -> Any | None:
+    try:
+        print(url)
+        return client.chat.completions.create(
+            model="gpt-4-vision-preview",
+            response_model=Table,
+            max_tokens=1800,
+            messages=[
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": """Extract data from the table, which is a menu. 
+                                        Table should have a title, description, price, and dietary restrictions column if applicable.
+                                        If there seem to be multiple tables, add another table column representing the title of the table (label the column type), hence joining all the tables into one. 
+                                        Dietary restrictions may include gluten-free, vegan, vegetarian, kosher, halal, and any other common restrictions. 
+                                        Only include restrictions that are mentioned in the menu (might be a symbol), othewise keep blank""",
+                        },
+                        {"type": "image_url", "image_url": {"url": url}},
+                    ],
+                }
+            ],
+        )
+    except Exception as e:
+        print(f"Error during table extraction: {e}")
+        return None  # Return None to indicate an error occurred
 
 
 if __name__ == "__main__":
