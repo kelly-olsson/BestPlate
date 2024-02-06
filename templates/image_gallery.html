@@ -169,14 +169,14 @@ h1 {
   text-align: center;
 
   b {
-  opacity:0;
-  display: inline-block;
-  position: absolute;
-  white-space: nowrap;
-  left: 0;
-  top: 0;
-  font-weight:200;
-  }
+    opacity:0;
+    display: inline-block;
+    position: absolute;
+    white-space: nowrap;
+    left: 0;
+    top: 0;
+    font-weight:200;
+}
 
   .is-visible {
     position:relative;
@@ -332,7 +332,8 @@ h1 {
 <div class="text">
   <h1>
         <span class="words-wrapper">
-    <b class="is-visible">Reaching out to OpenAI...</b>
+    <b>Reaching out to OpenAI...</b>
+    <b>Reticulating splines...</b>
     <b>Twiddling thumbs...</b>
     <b>Having a nice conversation...</b>
     <b>Talking about your food...</b>
@@ -391,7 +392,8 @@ h1 {
         }
 
         function init() {
-            setInterval(getStarted, 3000);
+            getStarted();
+            setInterval(getStarted, 5000);
         }
 
         $(document).ready(function() {
@@ -399,33 +401,18 @@ h1 {
         });
 
         function handleImageClick(url) {
-            // Show loading overlay
-            document.getElementById('loading-overlay').style.display = 'flex';
+    // Show loading overlay
+    document.getElementById('loading-overlay').style.display = 'flex';
 
-            fetch('/process-image/', {
-                method: 'POST',
-                headers: {
-                    'X-CSRFToken': getCSRFToken(),
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ imageUrl: url })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.redirect_url) {
-                    window.location.href = data.redirect_url;
-                } else {
-                    console.log('Processed Image:', data);
-                }
-                // Hide loading overlay after processing is complete
-                document.getElementById('loading-overlay').style.display = 'none';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                // Hide loading overlay even if there's an error
-                document.getElementById('loading-overlay').style.display = 'none';
-            });
-        }
+    // Simulate an API call with a delay
+    setTimeout(() => {
+        console.log('Simulated processing complete for image URL:', url);
+
+        // Hide loading overlay after simulated processing is complete
+        document.getElementById('loading-overlay').style.display = 'none';
+    }, 10000); // 3000 milliseconds = 3 seconds
+}
+
 
 
     </script>
