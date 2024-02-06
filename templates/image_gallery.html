@@ -7,160 +7,125 @@
     width: 100%;
     height: 100%;
     font-family: 'Open Sans', sans-serif;
-    background: #fff; /* Combined rule */
+    background: #fff;
 }
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            width: 100%;
-            height: 438px;
-            position: absolute;
-            left: 97px;
-            top: 300px;
-        }
-        .gallery img {
-            margin: 20px;
-            height: 198px;
-            cursor: pointer;
-            background: #D9D9D9;
-        }
-        .header {
-            width: 100%;
-            height: 68px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: #C2D1B3;
-        }
-        .header img {
-            width: 26px;
-            height: 56px;
-            position: absolute;
-            left: 25px;
-            top: 7px;
-        }
-        .header .title {
-            position: absolute;
-            left: 76px;
-            top: 5px;
-            color: #594A42;
-            font-size: 40px;
-            font-family: Baloo Chettan;
-        }
-        .select-image-text {
-            position: absolute;
-            top: 182px;
-            color: black;
-            font-size: 30px;
-            font-family: Amiri;
-            width: 100%;
-            text-align: center;
-        }
 
-        #loading-overlay {
-    position: fixed; /* Sit on top of the page content */
-    display: none; /* Hidden by default */
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
+/* Gallery styles */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 438px;
+    position: absolute;
+    left: 97px;
+    top: 300px;
+}
+
+.gallery img {
+    margin: 20px;
+    height: 198px;
+    cursor: pointer;
+    background: #D9D9D9;
+}
+
+/* Header styles */
+.header {
+    width: 100%;
+    height: 68px;
+    position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0,0.5); /* Semi-transparent background */
-    z-index: 2; /* Specify a stack order */
-    cursor: pointer;
-    align-items: center; /* Align children vertically */
-    justify-content: center; /* Align children horizontally */
-    display: flex; /* Use flexbox for alignment */
+    background: #C2D1B3;
 }
 
-.white-box {
-    background-color: white; /* White background */
-    padding: 20px; /* Some padding */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* A subtle shadow */
-    text-align: center; /* Center text */
-    width: 66%; /* 2/3 of the screen width */
-    max-width: 800px; /* Optional: max width for very large screens */
-}
-
-        @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
-.S {
+.header img {
+    width: 26px;
+    height: 56px;
     position: absolute;
-    margin: 30% 30%;
-    display: block;
+    left: 25px;
+    top: 7px;
 }
 
-#circle {
-	width: 200px;
-	height: 200px;
-  color: #fff;
-	background: linear-gradient(-45deg, #bbbcbc, #F3F3F3, #bbbcbc);
-	background-size: 400% 400%;
-	-webkit-animation: Gradient 5s ease infinite;
-	-moz-animation: Gradient 5s ease infinite;
-	animation: Gradient 5s ease infinite;
-	-moz-border-radius: 50vh;
-	-webkit-border-radius: 50pvh;
-	border-radius: 50vh;
-	position: relative;
-	margin:auto;
-	top:25%;
-
+.header .title {
+    position: absolute;
+    left: 76px;
+    top: 5px;
+    color: #594A42;
+    font-size: 40px;
+    font-family: Baloo Chettan;
+}
+        /* Text and overlay styles */
+.select-image-text,
+.text {
+    color: black;
+    text-align: center;
 }
 
-@-webkit-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
+.select-image-text {
+    position: absolute;
+    font-size: 30px;
+    font-family: Amiri;
+    top: 182px;
+    width: 100%;
 }
-
-@-moz-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
-}
-
-@keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
-}
-
-
 
 .text {
     position: relative;
     top: 26%;
     left: 0;
-    color: #000;
     width: 400px;
     margin: auto;
 }
-h1 {
-  text-align: center;
+
+#loading-overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.white-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 66%;
+    max-width: 800px;
+}
+
+/* Animation styles */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+#cutlery-logo {
+    width: 80px;
+    height: auto;
+    margin: 10px auto;
+    overflow: hidden;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+#cutlery-logo img {
+    width: 100%;
+    height: auto;
 }
 
 .words-wrapper {
   display: inline-block;
   position: relative;
   text-align: center;
+  }
 
   b {
     opacity:0;
@@ -172,172 +137,67 @@ h1 {
     font-weight:200;
 }
 
-  .is-visible {
+         .is-visible {
     position:relative;
     opacity:1;
-    -webkit-animation: push-in 0.5s;
-    -moz-animation: push-in 0.5s;
     animation: push-in 0.5s;
   }
 
   .is-hidden {
-    -webkit-animation: push-out 0.5s;
-    -moz-animation: push-out 0.5s;
     animation: push-out 0.5s;
   }
-}
 
-@-webkit-keyframes push-in {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(-100%);
-  }
-  70% {
-    opacity: 1;
-    -webkit-transform: translateY(10%);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-  }
-}
-@-moz-keyframes push-in {
-  0% {
-    opacity: 0;
-    -moz-transform: translateY(-100%);
-  }
-  60% {
-    opacity: 1;
-    -moz-transform: translateY(10%);
-  }
-  100% {
-    opacity: 1;
-    -moz-transform: translateY(0);
-  }
-}
+/* Keyframes for text animations */
 @keyframes push-in {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(-100%);
-    -moz-transform: translateXY(-100%);
-    -ms-transform: translateY(-100%);
-    -o-transform: translateY(-100%);
-    transform: translateY(-100%);
-  }
-  60% {
-    opacity: 1;
-    -webkit-transform: translateY(10%);
-    -moz-transform: translateY(10%);
-    -ms-transform: translateY(10%);
-    -o-transform: translateY(10%);
-    transform: translateY(10%);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-    -moz-transform: translateY(0);
-    -ms-transform: translateY(0);
-    -o-transform: translateY(0);
-    transform: translateY(0);
-  }
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(10%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
-@-webkit-keyframes push-out {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-  }
-  60% {
-    opacity: 0;
-    -webkit-transform: translateY(110%);
-  }
-  100% {
-    opacity: 0;
-    -webkit-transform: translateY(100%);
-  }
-}
-@-moz-keyframes push-out {
-  0% {
-    opacity: 1;
-    -moz-transform: translateY(0);
-  }
-  60% {
-    opacity: 0;
-    -moz-transform: translateY(110%);
-  }
-  100% {
-    opacity: 0;
-    -moz-transform: translateY(100%);
-  }
-}
+
 @keyframes push-out {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-    -moz-transform: translateY(0);
-    -ms-transform: translateY(0);
-    -o-transform: translateY(0);
-    transform: translateY(0);
-  }
-  60% {
-    opacity: 0;
-    -webkit-transform: translateX(110%);
-    -moz-transform: translateY(110%);
-    -ms-transform: translateY(110%);
-    -o-transform: translateY(110%);
-    transform: translateY(110%);
-  }
-  100% {
-    opacity: 0;
-    -webkit-transform: translateY(100%);
-    -moz-transform: translateY(100%);
-    -ms-transform: translateY(100%);
-    -o-transform: translateY(100%);
-    transform: translateY(100%);
-  }
-}
-
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
+    0% {
+        opacity: 1;
+        transform: translateY(0);
     }
-    50% {
-        transform: scale(1.05); /* Slightly larger */
+    60% {
+        opacity: 0;
+        transform: translateY(110%);
     }
-}
-
-#cutlery-logo {
-    width: 80px;
-    height: auto;
-    margin: 10px auto;
-    overflow: hidden;
-    animation: pulse 2s infinite ease-in-out; /* Adjust duration and easing as needed */
-}
-
-#cutlery-logo img {
-    width: 100%;
-    height: auto;
+    100% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
 }
 
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body style="background: #F4EFE7">
-    <div class="header">
-        <img src="https://i.imgur.com/YK3dn3b.png" />
-        <div class="title">BestPlate</div>
-    </div>
+<div class="header">
+    <img src="https://i.imgur.com/YK3dn3b.png"/>
+    <div class="title">BestPlate</div>
+</div>
 
-        <!-- Loading Animation Overlay -->
+<!-- Loading Animation Overlay -->
 <div id="loading-overlay" style="display: none;">
     <div class="white-box">
         <!-- Cutlery Logo with Animation -->
-<div id="cutlery-logo">
-    <img src="https://i.imgur.com/YK3dn3b.png" />
-</div>
+        <div id="cutlery-logo">
+            <img src="https://i.imgur.com/YK3dn3b.png"/>
+        </div>
 
 
-<div class="text">
-  <h1>
+        <div class="text">
+            <h1>
         <span class="words-wrapper">
     <b>Reaching out to OpenAI...</b>
     <b>Reticulating splines...</b>
@@ -345,99 +205,82 @@ h1 {
     <b>Having a nice conversation...</b>
     <b>Talking about your food...</b>
         </span>
-   </h1>
-</div>
-</div>
-</div>
-
-    <div class="select-image-text">Select Menu Image:</div>
-
-    <div class="gallery">
-        {% for url in image_urls %}
-            <img src="{{ url }}" onclick="handleImageClick('{{ url }}')">
-        {% endfor %}
+            </h1>
+        </div>
     </div>
+</div>
 
-    <script>
-        function getCSRFToken() {
-            let cookies = document.cookie.split(';');
-            for (let cookie of cookies) {
-                let [name, value] = cookie.trim().split('=');
-                if (name === 'csrftoken') {
-                    return decodeURIComponent(value);
-                }
+<div class="select-image-text">Select Menu Image:</div>
+
+<div class="gallery">
+    {% for url in image_urls %}
+    <img src="{{ url }}" onclick="handleImageClick('{{ url }}')">
+    {% endfor %}
+</div>
+
+<script>
+    function getCSRFToken() {
+        let cookies = document.cookie.split(';');
+        for (let cookie of cookies) {
+            let [name, value] = cookie.trim().split('=');
+            if (name === 'csrftoken') {
+                return decodeURIComponent(value);
             }
-            return '';
         }
+        return '';
+    }
 
-        var isLast = function(word) {
-          return $(word).next().length > 0 ? false : true;
-        }
+    var isLast = function(word) {
+      return $(word).next().length > 0 ? false : true;
+    }
 
-        var getNext = function(word) {
-          return $(word).next();
-        }
+    var getNext = function(word) {
+      return $(word).next();
+    }
 
-        var getVisible = function () {
-          return document.getElementsByClassName('is-visible');
-        }
+    var getVisible = function () {
+      return document.getElementsByClassName('is-visible');
+    }
 
-        var getFirst =  function() {
-          var node = $('.words-wrapper').children().first();
-          return node;
-        }
+    var getFirst =  function() {
+      var node = $('.words-wrapper').children().first();
+      return node;
+    }
 
-        function switchWords(current, next) {
-            $(current).removeClass('is-visible').addClass('is-hidden');
-            $(next).removeClass('is-hidden').addClass('is-visible');
-        }
+    function switchWords(current, next) {
+        $(current).removeClass('is-visible').addClass('is-hidden');
+        $(next).removeClass('is-hidden').addClass('is-visible');
+    }
 
-        function getStarted() {
-            var current = $('.words-wrapper b.is-visible');
-            var next = current.next().length ? current.next() : $('.words-wrapper b').first();
-            switchWords(current, next);
-        }
+    function getStarted() {
+        var current = $('.words-wrapper b.is-visible');
+        var next = current.next().length ? current.next() : $('.words-wrapper b').first();
+        switchWords(current, next);
+    }
 
-        function init() {
-            getStarted();
-            setInterval(getStarted, 5000);
-        }
+    function init() {
+        getStarted();
+        setInterval(getStarted, 5000);
+    }
 
-        $(document).ready(function() {
-            init();
-        });
+    $(document).ready(function() {
+        init();
+    });
 
-        function handleImageClick(url) {
-            // Show loading overlay
-            document.getElementById('loading-overlay').style.display = 'flex';
+function handleImageClick(url) {
+    // Show loading overlay
+document.getElementById('loading-overlay').style.display = 'flex';
 
-            fetch('/process-image/', {
-                method: 'POST',
-                headers: {
-                    'X-CSRFToken': getCSRFToken(),
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ imageUrl: url })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.redirect_url) {
-                    window.location.href = data.redirect_url;
-                } else {
-                    console.log('Processed Image:', data);
-                }
-                // Hide loading overlay after processing is complete
-                document.getElementById('loading-overlay').style.display = 'none';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                // Hide loading overlay even if there's an error
-                document.getElementById('loading-overlay').style.display = 'none';
-            });
-        }
+// Simulate an API call with a delay
+setTimeout(() => {
+    console.log('Simulated processing complete for image URL:', url);
+
+    // Hide loading overlay after simulated processing is complete
+    document.getElementById('loading-overlay').style.display = 'none';
+}, 10000); // 3000 milliseconds = 3 seconds
+}
 
 
-
-    </script>
+</script>
 </body>
 </html>
