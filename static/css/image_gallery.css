@@ -121,9 +121,9 @@ html, body {
   display: inline-block;
   position: relative;
   text-align: center;
-  }
+ }
 
-  b {
+.load-text {
     opacity:0;
     display: inline-block;
     position: absolute;
