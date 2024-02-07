@@ -90,6 +90,7 @@ function initMap() {
                 menuLink.href = "#"; // Placeholder href, should be replaced with actual link
                 menuLink.textContent = "Search menus";
                 menuLink.onclick = function() {
+                    showLoadingOverlay();
                     handlePlaceId(place.place_id);
                     return false; // Prevent default link behavior
                 };
@@ -155,8 +156,14 @@ function handlePlaceId(placeId) {
             console.log('Response:', data);
             // Handle other response data here
         }
+        // Hide loading overlay after processing is complete
+        document.getElementById('loading-overlay').style.display = 'none';
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => {
+        console.error('Error:', error);
+        // Hide loading overlay even if there's an error
+        document.getElementById('loading-overlay').style.display = 'none';
+    });
 }
 
 // Function to get CSRF token from cookies (needed for Django POST requests)

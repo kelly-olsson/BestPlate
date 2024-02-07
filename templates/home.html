@@ -4,11 +4,13 @@
     <head>
         <title>Welcome to BestPlate!</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+        <!-- Include the Overlay Stylesheet -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/loading_overlay.css' %}">
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
         <script type="text/javascript">
             var googleMapsApiKey = "{{ google_maps_api_key }}";
         </script>
-        <script type="module" src="{% static 'js/maps.js' %}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
         <div class="header">
@@ -25,5 +27,23 @@
         <div class="prompt-column">
             <p>Please search for a restaurant and click "Search menus" to see menu pictures.</p>
         </div>
+
+        <!-- Include the Overlay Template -->
+        {% include 'loading_overlay.html' %}
+
+        <!-- Populate the loading overlay with specific text for this page -->
+        <script>
+            $(document).ready(function() {
+                var texts = ["Checking out your restaurant...", "Grabbing menus...", "Twiddling thumbs...",
+                    "Looking at your food..."];
+                texts.forEach(function(text) {
+                    $('.words-wrapper').append('<b class="load-text">' + text + '</b>');
+                });
+            });
+        </script>
+
+        <script type="module" src="{% static 'js/maps.js' %}"></script>
+        <!-- Include the Overlay Animation Script -->
+        <script src="{% static 'js/loading_overlay.js' %}"></script>
     </body>
 </html>

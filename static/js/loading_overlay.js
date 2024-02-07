@@ -14,6 +14,10 @@ function initOverlayAnimation() {
     setInterval(getStarted, 5000);
 }
 
-$(document).ready(function() {
+function showLoadingOverlay() {
+    // Show the overlay
+    document.getElementById('loading-overlay').style.display = 'flex';
+
+    // Start or restart the animation
     initOverlayAnimation();
-});
+}
