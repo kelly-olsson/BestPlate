@@ -16,6 +16,7 @@ django-environ = "*"
 selenium = "*"
 django-datatables-view = "*"
 tabulate = "*"
+djhtml = "*"
 
 [dev-packages]
 

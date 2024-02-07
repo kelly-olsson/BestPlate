@@ -1,111 +1,48 @@
 <!DOCTYPE html>
 <html>
-{% load static %}
-<head>
-    <title>Menu Gallery</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/image_gallery.css' %}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
-<body style="background: #F4EFE7">
-<div class="header">
-    <img src="https://i.imgur.com/YK3dn3b.png"/>
-    <div class="title">BestPlate</div>
-</div>
+    {% load static %}
+    <head>
+        <title>Menu Gallery</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/image_gallery.css' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body style="background: #F4EFE7">
+        <div class="header">
+            <img src="https://i.imgur.com/YK3dn3b.png"/>
+            <div class="title">BestPlate</div>
+        </div>
 
 <!-- Loading Animation Overlay -->
-<div id="loading-overlay" style="display: none;">
-    <div class="white-box">
+        <div id="loading-overlay" style="display: none;">
+            <div class="white-box">
         <!-- Cutlery Logo with Animation -->
-        <div id="cutlery-logo">
-            <img src="https://i.imgur.com/YK3dn3b.png"/>
+                <div id="cutlery-logo">
+                    <img src="https://i.imgur.com/YK3dn3b.png"/>
+                </div>
+
+
+                <div class="text">
+                    <h1>
+                        <span class="words-wrapper">
+                            <b class="load-text">Reaching out to OpenAI...</b>
+                            <b class="load-text">Reticulating splines...</b>
+                            <b class="load-text">Twiddling thumbs...</b>
+                            <b class="load-text">Having a nice conversation...</b>
+                            <b class="load-text">Talking about your food...</b>
+                        </span>
+                    </h1>
+                </div>
+            </div>
         </div>
 
+        <div class="select-image-text">Select Menu Image:</div>
 
-        <div class="text">
-            <h1>
-                <span class="words-wrapper">
-                    <b class="load-text">Reaching out to OpenAI...</b>
-                    <b class="load-text">Reticulating splines...</b>
-                    <b class="load-text">Twiddling thumbs...</b>
-                    <b class="load-text">Having a nice conversation...</b>
-                    <b class="load-text">Talking about your food...</b>
-                </span>
-            </h1>
+        <div class="gallery">
+            {% for url in image_urls %}
+                <img src="{{ url }}" onclick="handleImageClick('{{ url }}')">
+            {% endfor %}
         </div>
-    </div>
-</div>
 
-<div class="select-image-text">Select Menu Image:</div>
-
-<div class="gallery">
-    {% for url in image_urls %}
-    <img src="{{ url }}" onclick="handleImageClick('{{ url }}')">
-    {% endfor %}
-</div>
-
-<script>
-    function getCSRFToken() {
-        let cookies = document.cookie.split(';');
-        for (let cookie of cookies) {
-            let [name, value] = cookie.trim().split('=');
-            if (name === 'csrftoken') {
-                return decodeURIComponent(value);
-            }
-        }
-        return '';
-    }
-
-    var isLast = function(word) {
-      return $(word).next().length > 0 ? false : true;
-    }
-
-    var getNext = function(word) {
-      return $(word).next();
-    }
-
-    var getVisible = function () {
-      return document.getElementsByClassName('is-visible');
-    }
-
-    var getFirst =  function() {
-      var node = $('.words-wrapper').children().first();
-      return node;
-    }
-
-    function switchWords(current, next) {
-        $(current).removeClass('is-visible').addClass('is-hidden');
-        $(next).removeClass('is-hidden').addClass('is-visible');
-    }
-
-    function getStarted() {
-        var current = $('.words-wrapper b.is-visible');
-        var next = current.next().length ? current.next() : $('.words-wrapper b').first();
-        switchWords(current, next);
-    }
-
-    function init() {
-        getStarted();
-        setInterval(getStarted, 5000);
-    }
-
-    $(document).ready(function() {
-        init();
-    });
-
-function handleImageClick(url) {
-    // Show loading overlay
-document.getElementById('loading-overlay').style.display = 'flex';
-
-// Simulate an API call with a delay
-setTimeout(() => {
-    console.log('Simulated processing complete for image URL:', url);
-
-    // Hide loading overlay after simulated processing is complete
-    document.getElementById('loading-overlay').style.display = 'none';
-}, 10000); // 3000 milliseconds = 3 seconds
-}
-
-
-</script>
-</body>
+        <script src="{% static 'js/image_gallery.js' %}"></script>
+    </body>
 </html>

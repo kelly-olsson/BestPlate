@@ -1,99 +1,99 @@
 <!-- menu_filter.html -->
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Menu Filter</title>
-    <style>
-        .header {
-            width: 1280px;
-            height: 68px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: #C2D1B3;
-        }
-        .header img {
-            width: 26px;
-            height: 56px;
-            position: absolute;
-            left: 25px;
-            top: 7px;
-        }
-        .header .title {
-            position: absolute;
-            left: 76px;
-            top: 5px;
-            color: #594A42;
-            font-size: 40px;
-            font-family: Baloo Chettan;
-        }
-        .select-image-text {
-            position: absolute;
-            left: 491px;
-            top: 182px;
-            color: black;
-            font-size: 30px;
-            font-family: Amiri;
-        }
-    </style>
-    <title>Menu</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
+    <head>
+        <title>Menu Filter</title>
+        <style>
+            .header {
+                width: 1280px;
+                height: 68px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: #C2D1B3;
+            }
+            .header img {
+                width: 26px;
+                height: 56px;
+                position: absolute;
+                left: 25px;
+                top: 7px;
+            }
+            .header .title {
+                position: absolute;
+                left: 76px;
+                top: 5px;
+                color: #594A42;
+                font-size: 40px;
+                font-family: Baloo Chettan;
+            }
+            .select-image-text {
+                position: absolute;
+                left: 491px;
+                top: 182px;
+                color: black;
+                font-size: 30px;
+                font-family: Amiri;
+            }
+        </style>
+        <title>Menu</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+            }
 
-        h1 {
-            text-align: center;
-            color: #333;
-        }
+            h1 {
+                text-align: center;
+                color: #333;
+            }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
 
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
+            th, td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+            }
 
-        th {
-            background-color: #f2f2f2;
-        }
-        .search-form {
-            text-align: center;
-            margin-top: 20px;
-        }
+            th {
+                background-color: #f2f2f2;
+            }
+            .search-form {
+                text-align: center;
+                margin-top: 20px;
+            }
 
-        .search-input {
-            padding: 5px;
-            width: 300px;
-        }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <img src="https://i.imgur.com/YK3dn3b.png" />
-        <div class="title">BestPlate</div>
-    </div>
-    <h1>Menu</h1>
+            .search-input {
+                padding: 5px;
+                width: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <img src="https://i.imgur.com/YK3dn3b.png" />
+            <div class="title">BestPlate</div>
+        </div>
+        <h1>Menu</h1>
     <!-- Add a form for the search box -->
-    <form class="search-form" method="post" action="{% url 'menu_filter' %}">
-        {% csrf_token %}
-        <label for="search" style="margin-right: 10px;">Search: </label>
-        <input type="text" id="search" name="search" class="search-input" placeholder="Type here...">
-        <button type="submit">Search</button>
-    </form>
+        <form class="search-form" method="post" action="{% url 'menu_filter' %}">
+            {% csrf_token %}
+            <label for="search" style="margin-right: 10px;">Search: </label>
+            <input type="text" id="search" name="search" class="search-input" placeholder="Type here...">
+            <button type="submit">Search</button>
+        </form>
     <!-- Display the search response -->
-    <div class="search-response">
-        {{ search_response }}
-    </div>
-    <div>
+        <div class="search-response">
+            {{ search_response }}
+        </div>
+        <div>
         <!-- Render the DataFrame's HTML -->
-        {{ df_html|safe }}
-    </div>
-</body>
+            {{ df_html|safe }}
+        </div>
+    </body>
 </html>

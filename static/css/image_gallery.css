@@ -118,10 +118,10 @@ html, body {
 }
 
 .words-wrapper {
-  display: inline-block;
-  position: relative;
-  text-align: center;
- }
+    display: inline-block;
+    position: relative;
+    text-align: center;
+}
 
 .load-text {
     opacity:0;
