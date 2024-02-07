@@ -4,35 +4,14 @@
     <head>
         <title>Menu Gallery</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/image_gallery.css' %}">
+        <!-- Include the Overlay Stylesheet -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/loading_overlay.css' %}">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
         <div class="header">
             <img src="https://i.imgur.com/YK3dn3b.png"/>
             <div class="title">BestPlate</div>
-        </div>
-
-        <!-- Loading Animation Overlay -->
-        <div id="loading-overlay" style="display: none;">
-            <div class="white-box">
-                <!-- Cutlery Logo with Animation -->
-                <div id="cutlery-logo">
-                    <img src="https://i.imgur.com/YK3dn3b.png"/>
-                </div>
-
-
-                <div class="text">
-                    <h1>
-                        <span class="words-wrapper">
-                            <b class="load-text">Reaching out to OpenAI...</b>
-                            <b class="load-text">Reticulating splines...</b>
-                            <b class="load-text">Twiddling thumbs...</b>
-                            <b class="load-text">Having a nice conversation...</b>
-                            <b class="load-text">Talking about your food...</b>
-                        </span>
-                    </h1>
-                </div>
-            </div>
         </div>
 
         <div class="select-image-text">Select Menu Image:</div>
@@ -43,6 +22,22 @@
             {% endfor %}
         </div>
 
+        <!-- Include the Overlay Template -->
+        {% include 'loading_overlay.html' %}
+
+        <!-- Populate the loading overlay with specific text for this page -->
+        <script>
+            $(document).ready(function() {
+                var texts = ["Reaching out to OpenAI...", "Reticulating splines...", "Twiddling thumbs...",
+                    "Having a nice conversation...", "Talking about your food..."];
+                texts.forEach(function(text) {
+                    $('.words-wrapper').append('<b class="load-text">' + text + '</b>');
+                });
+            });
+        </script>
+
         <script src="{% static 'js/image_gallery.js' %}"></script>
+        <!-- Include the Overlay Animation Script -->
+        <script src="{% static 'js/loading_overlay.js' %}"></script>
     </body>
 </html>

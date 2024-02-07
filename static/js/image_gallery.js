@@ -9,43 +9,6 @@ function getCSRFToken() {
     return '';
 }
 
-var isLast = function(word) {
-    return $(word).next().length > 0 ? false : true;
-}
-
-var getNext = function(word) {
-    return $(word).next();
-}
-
-var getVisible = function () {
-    return document.getElementsByClassName('is-visible');
-}
-
-var getFirst =  function() {
-    var node = $('.words-wrapper').children().first();
-    return node;
-}
-
-function switchWords(current, next) {
-    $(current).removeClass('is-visible').addClass('is-hidden');
-    $(next).removeClass('is-hidden').addClass('is-visible');
-}
-
-function getStarted() {
-    var current = $('.words-wrapper b.is-visible');
-    var next = current.next().length ? current.next() : $('.words-wrapper b').first();
-    switchWords(current, next);
-}
-
-function init() {
-    getStarted();
-    setInterval(getStarted, 5000);
-}
-
-$(document).ready(function() {
-    init();
-});
-
 function handleImageClick(url) {
     // Show loading overlay
     document.getElementById('loading-overlay').style.display = 'flex';

@@ -1,0 +1,110 @@
+.overlay {
+    position: relative;
+    top: 26%;
+    left: 0;
+    width: 400px;
+    margin: auto;
+    color: black;
+    text-align: center;
+}
+
+#loading-overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.white-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 66%;
+    max-width: 800px;
+}
+
+/* Animation styles */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+#cutlery-logo {
+    width: 80px;
+    height: auto;
+    margin: 10px auto;
+    overflow: hidden;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+#cutlery-logo img {
+    width: 100%;
+    height: auto;
+}
+
+.words-wrapper {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+}
+
+.load-text {
+    opacity:0;
+    display: inline-block;
+    position: absolute;
+    white-space: nowrap;
+    left: 0;
+    top: 0;
+    font-weight:200;
+}
+
+.is-visible {
+    position:relative;
+    opacity:1;
+    animation: push-in 0.5s;
+}
+
+.is-hidden {
+    animation: push-out 0.5s;
+}
+
+/* Keyframes for text animations */
+@keyframes push-in {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(10%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes push-out {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    60% {
+        opacity: 0;
+        transform: translateY(110%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
